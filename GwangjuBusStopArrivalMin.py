@@ -1,7 +1,7 @@
 import requests
 import json
 
-# 210409 기준 키 없어도 정상작동
+#210409 기준 키 없어도 정상작동
 KEY = ""
 
 
@@ -71,7 +71,11 @@ print("정류장 번호를 입력하세요 :",end='')
 busStopId = input()
 # 버스 정류장 번호 (ARS번호를 ID로 변경)
 busSave = BusStopId(busStopId)
-busStopId = busSave["BUSSTOP_ID"]
-# 해당 정류장에 버스 도착까지 몇분 남아있는가 출력
-BusArrivalPrint(BusArrival(busStopId),busSave["BUSSTOP_NAME"])
+
+if busSave == None:
+    print("운행중인 버스가 없거나 버스 정류장 번호를 잘못 입력하셨습니다.")
+else:
+    busStopId = busSave["BUSSTOP_ID"]
+    # 해당 정류장에 버스 도착까지 몇분 남아있는가 출력
+    BusArrivalPrint(BusArrival(busStopId),busSave["BUSSTOP_NAME"])
 
